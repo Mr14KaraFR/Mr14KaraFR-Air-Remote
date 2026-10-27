@@ -13,8 +13,10 @@ Android 8.0 ou plus récent. Première version à tester sur téléphone : compi
 1. Installer l’APK sur le téléphone.
 2. Dans BeamNG, monter le kit pneumatique et activer la liaison **Téléphone Android** depuis l’ATH.
 3. Connecter le téléphone et le PC au même Wi-Fi.
-4. Dans l’application, saisir l’adresse IPv4 affichée dans l’ATH. Le port utilisé est `8725`.
-5. Ouvrir la télécommande et recopier le code de connexion affiché dans le jeu.
+4. Dans l’application, toucher **Scanner le QR code de l’ATH** et autoriser la caméra.
+5. Viser le QR affiché dans le jeu : avec le mod **0.11.7 ou plus récent**, l’adresse du PC et le code de connexion sont reconnus automatiquement.
+
+Le scanner fonctionne localement, sans envoyer ni enregistrer les images. La saisie manuelle de l’adresse et du code reste disponible. Les anciens QR contenant seulement l’adresse restent lisibles, mais demandent encore les six chiffres.
 
 L’application mémorise l’adresse du PC. Elle conserve l’interface actuelle du mod et maintient l’écran allumé tant qu’elle est affichée. Verrouiller le téléphone ne réaffiche pas l’ATH tant que la session du mod reste valide.
 

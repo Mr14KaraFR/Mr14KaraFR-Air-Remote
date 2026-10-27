@@ -1,8 +1,8 @@
 {
   "applicationId": "fr.mr14kara.airremote",
-  "versionCode": 1,
-  "versionName": "1.0.0",
-  "apkUrl": "https://github.com/Mr14KaraFR/Mr14KaraFR-Air-Remote/releases/download/android-v1.0.0/Mr14KaraFR_AIR.apk",
-  "sha256": "9b253ff6812159b64962a34968dfe9228704c9441df4110952ec517d272b5518",
-  "notes": "Première version Android : interface actuelle du mod, PC mémorisé, écran maintenu allumé et vérification des mises à jour."
+  "versionCode": 2,
+  "versionName": "1.1.0",
+  "apkUrl": "https://github.com/Mr14KaraFR/Mr14KaraFR-Air-Remote/releases/download/android-v1.1.0/Mr14KaraFR_AIR.apk",
+  "sha256": "6de2ff77f287353426f02b30892cd11e7fbf2fd62dd12dbf605389969084a99d",
+  "notes": "Scanner le QR code de l’ATH depuis l’application pour reconnaître le PC et se connecter automatiquement avec le mod 0.11.7. Lecture locale hors ligne ; saisie manuelle conservée."
 }
