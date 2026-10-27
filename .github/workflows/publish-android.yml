@@ -1,0 +1,62 @@
+name: Publier le telechargement Android
+on:
+  push:
+    branches: [main]
+    paths:
+      - downloads/Mr14KaraFR_AIR.apk
+      - updates/latest.json
+      - .github/workflows/publish-android.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-android
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verifier et publier l APK signe
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: python
+        run: |
+          import os, json, urllib.request, urllib.error, hashlib, re
+          repo=os.environ['GITHUB_REPOSITORY']
+          commit=os.environ['GITHUB_SHA']
+          raw='https://raw.githubusercontent.com/'+repo+'/'+commit+'/'
+          def public(path):
+              with urllib.request.urlopen(raw+path,timeout=30) as response:
+                  return response.read()
+          info=json.loads(public('updates/latest.json'))
+          assert info['applicationId']=='fr.mr14kara.airremote'
+          version=info['versionName']
+          assert re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',version)
+          apk=public('downloads/Mr14KaraFR_AIR.apk')
+          digest=hashlib.sha256(apk).hexdigest()
+          assert digest==info['sha256'] and apk[:2]==b'PK'
+          def api(path,data=None):
+              body=json.dumps(data).encode() if data is not None else None
+              request=urllib.request.Request('https://api.github.com/repos/'+repo+path,data=body,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'})
+              with urllib.request.urlopen(request,timeout=30) as response:
+                  return json.load(response)
+          tag='android-v'+version
+          try:
+              release=api('/releases/tags/'+tag)
+          except urllib.error.HTTPError as ex:
+              if ex.code!=404: raise
+              release=api('/releases',{'tag_name':tag,'target_commitish':commit,'name':'Mr14KaraFR AIR '+version,'body':info.get('notes','')+'\n\nAndroid 8.0 ou plus recent. Premiere version a tester sur telephone.\n\nSHA-256 : `'+digest+'`','draft':False,'prerelease':False})
+          assets=release.get('assets',[])
+          existing=[a for a in assets if a['name']=='Mr14KaraFR_AIR.apk']
+          if not existing:
+              upload=release['upload_url'].split('{',1)[0]+'?name=Mr14KaraFR_AIR.apk'
+              assert urllib.parse.urlsplit(upload).hostname=='uploads.github.com'
+              request=urllib.request.Request(upload,data=apk,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Content-Type':'application/vnd.android.package-archive','Content-Length':str(len(apk))})
+              with urllib.request.urlopen(request,timeout=30) as response:
+                  asset=json.load(response)
+              assert asset['size']==len(apk)
+          else:
+              assert existing[0]['size']==len(apk)
+          print('Publication terminee : '+release['html_url'])
+
