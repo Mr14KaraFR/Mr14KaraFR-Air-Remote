@@ -4,7 +4,7 @@ Application Android compagnon du mod de suspension pneumatique BeamNG.drive de *
 
 ## Télécharger
 
-[Installer Mr14KaraFR AIR pour Android](downloads/Mr14KaraFR_AIR.apk?raw=true)
+[Installer Mr14KaraFR AIR pour Android](https://github.com/Mr14KaraFR/Mr14KaraFR-Air-Remote/releases/latest/download/Mr14KaraFR_AIR.apk)
 
 Android 8.0 ou plus récent. Première version à tester sur téléphone : compilation et signature vérifiées, pas encore de validation sur appareil physique.
 
