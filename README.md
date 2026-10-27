@@ -28,3 +28,7 @@ L’application mémorise l’adresse du PC. Elle conserve l’interface actuell
 - Les APK sont vérifiés par leur empreinte SHA-256, leur nom de paquet et leur signature. La même clé de signature doit être conservée pour publier les prochaines versions.
 
 Ce dépôt contient seulement les fichiers publics de distribution. Aucune clé privée, aucun code de connexion et aucune adresse de PC n’y sont publiés.
+
+## Correction 1.1.1 : retour PC et reconnexion
+
+Avec le mod **0.16.1 ou plus récent**, le bouton **PC** rend l’ATH visible sans perdre la télécommande. **Reprendre la télécommande** ou **Recharger** depuis l’accueil restaure la connexion existante. Un rechargement ou une réouverture récupère aussi la session tant qu’elle est valide ; si elle a expiré, le code du jeu est demandé normalement. Verrouiller le téléphone garde l’ATH masqué.

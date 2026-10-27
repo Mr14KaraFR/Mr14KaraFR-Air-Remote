@@ -1,8 +1,8 @@
 {
   "applicationId": "fr.mr14kara.airremote",
-  "versionCode": 2,
-  "versionName": "1.1.0",
-  "apkUrl": "https://github.com/Mr14KaraFR/Mr14KaraFR-Air-Remote/releases/download/android-v1.1.0/Mr14KaraFR_AIR.apk",
-  "sha256": "6de2ff77f287353426f02b30892cd11e7fbf2fd62dd12dbf605389969084a99d",
-  "notes": "Scanner le QR code de l’ATH depuis l’application pour reconnaître le PC et se connecter automatiquement avec le mod 0.11.7. Lecture locale hors ligne ; saisie manuelle conservée."
+  "versionCode": 3,
+  "versionName": "1.1.1",
+  "apkUrl": "https://github.com/Mr14KaraFR/Mr14KaraFR-Air-Remote/releases/download/android-v1.1.1/Mr14KaraFR_AIR.apk",
+  "sha256": "ea3838b452b0bb77cabe60fac97ee74fe2c5f8f1089f65b67634a4ef338e7461",
+  "notes": "Correction du bouton PC : la télécommande est conservée, l’ATH réapparaît sur l’écran PC et Reprendre restaure la connexion. Recharger reprend la télécommande depuis l’accueil. Session récupérable après réouverture ; téléphone verrouillé : ATH toujours masqué. Mod 0.16.1 recommandé."
 }
